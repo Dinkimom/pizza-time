@@ -1,1 +1,1 @@
-export type Entity = 'users' | 'sports' | 'games'
+export type Entity = 'menu' | 'order' | 'user';

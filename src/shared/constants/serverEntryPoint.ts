@@ -1,1 +1,1 @@
-export const serverEntryPoint = ''
+export const serverEntryPoint = '';
