@@ -8,5 +8,6 @@ export interface PizzaDTO {
       eur: number;
     };
     weight: number;
+    size: number;
   }[];
 }

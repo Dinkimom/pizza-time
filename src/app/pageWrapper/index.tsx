@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import './index.css';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { CART } from '../../shared/constants/pathes';
+import './index.css';
 
 interface IPageWrapperProps {
   children: ReactNode;
@@ -16,11 +16,13 @@ export const PageWrapper = ({ children }: IPageWrapperProps) => {
     <div className='page-wrapper'>
       <header className='page-wrapper__header'>
         <div className='container'>
-          <img
-            src='./images/logo.svg'
-            alt='logo'
-            className='page-wrapper__header__logo'
-          />
+          <Link to='/'>
+            <img
+              src='./images/logo.svg'
+              alt='logo'
+              className='page-wrapper__header__logo'
+            />
+          </Link>
           <div className='page-wrapper__header__control-block'>
             <button
               className={`cart-button primary-button ${

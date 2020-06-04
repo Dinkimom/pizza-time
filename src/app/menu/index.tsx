@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Card } from '../../shared/components/card';
 import { Container } from '../../shared/components/container';
 import { IRootState } from '../../store/state';
+import { SelectionModal } from '../selectionModal';
 import { menuActions } from './actions';
 import './index.css';
 
@@ -21,12 +22,23 @@ export const Menu = () => {
 
   const renderList = () =>
     list.map((item) => (
-      <Card record={item} key={item.id} handleClick={() => null} />
+      <Card
+        record={item}
+        key={item.id}
+        handleClick={() => handlePizzaOpen(item.id)}
+      />
     ));
 
+  const handlePizzaOpen = (id: string) => {
+    dispatch(menuActions.openPizza(id));
+  };
+
   return (
-    <Container isFetching={isFetching} error={error} className='menu'>
-      {renderList()}
-    </Container>
+    <>
+      <Container isFetching={isFetching} error={error} className='menu'>
+        {renderList()}
+      </Container>
+      <SelectionModal />
+    </>
   );
 };

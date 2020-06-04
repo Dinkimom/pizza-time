@@ -1,0 +1,32 @@
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 2000;
+  top: 0;
+  left: 0;
+}
+
+.modal__body {
+  box-sizing: border-box;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  height: auto;
+  min-width: 100px;
+  width: 300px;
+  background: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.25);
+}
+
+.modal__body__close-icon {
+  position: absolute;
+  top: -30px;
+  right: 5px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}

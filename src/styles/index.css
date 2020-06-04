@@ -2,6 +2,7 @@
 
 :root {
   --primary-color: #fc6921;
+  --primary-hovered-color: #e25f1e;
   --gray-color: #e6e6e6;
   --gray-font-color: #bebebe;
   --dark-gray-color: #6b6b6b;
@@ -32,6 +33,7 @@ button {
   padding: 10px 20px;
   border-radius: 10px;
   transition: all 0.5s;
+  cursor: pointer;
 }
 
 .primary-button {
@@ -40,8 +42,15 @@ button {
   color: var(--primary-color);
 }
 
-.primary-button:hover {
+.primary-button:hover,
+.primary-button--active {
   background: var(--primary-color);
+  color: white;
+  border: 1px solid var(--primary-color);
+}
+
+.primary-button--active:hover {
+  background: var(--primary-hovered-color);
   color: white;
 }
 
