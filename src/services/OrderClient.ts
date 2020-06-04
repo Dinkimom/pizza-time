@@ -7,7 +7,9 @@ export class OrderClient extends AbstractClient {
     super('order');
   }
 
-  public getOrders = (): OrderDTO[] => {};
+  public getOrders = (): OrderDTO[] => {
+    return [];
+  };
 
   public addToOrder = (data: OrderDTO) => {};
 

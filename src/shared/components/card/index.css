@@ -1,0 +1,27 @@
+.card {
+  padding: 20px;
+  /* possible border should be removed */
+  border: 1px solid var(--gray-color);
+  border-radius: var(--border-radius);
+  transition: all 0.5s;
+}
+
+.card__image {
+  margin: 0 auto;
+  display: block;
+}
+
+.card__name {
+  font-size: 1.2rem;
+}
+
+.card__description {
+  font-size: 0.9rem;
+  color: var(--gray-font-color);
+}
+
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

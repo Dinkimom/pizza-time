@@ -12,4 +12,9 @@ export abstract class AbstractClient {
       timeout: 20000,
     });
   }
+
+  // for imitating real server request
+  public sleep = (ms: number) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
 }

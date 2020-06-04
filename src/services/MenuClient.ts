@@ -1,3 +1,4 @@
+import { pizzas } from './../shared/constants/pizzas';
 import { PizzaDTO } from './../shared/dto/PizzaDTO';
 import { AbstractClient } from './AbstractClient';
 
@@ -6,8 +7,9 @@ export class MenuClient extends AbstractClient {
     super('menu');
   }
 
-  public getMenu = (): PizzaDTO[] => {
-    // todo
-    // add dummy data
+  public getMenu = async (): Promise<PizzaDTO[]> => {
+    await this.sleep(1000);
+
+    return pizzas;
   };
 }
