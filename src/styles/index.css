@@ -3,6 +3,8 @@
 :root {
   --primary-color: #fc6921;
   --primary-hovered-color: #e25f1e;
+  --error-color: #f55844;
+  --error-background-color: #ffe0dc;
   --gray-color: #e6e6e6;
   --gray-font-color: #bebebe;
   --dark-gray-color: #6b6b6b;
@@ -88,4 +90,34 @@ button {
 
 .none {
   display: none;
+}
+
+.modal h1 {
+  font-weight: 400;
+}
+
+.form__field {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.form__field input {
+  border: 1px solid var(--gray-color);
+  padding: 10px;
+  border-radius: var(--border-radius);
+  font-size: 1.3rem;
+  transition: all 0.5s;
+  margin-left: 20px;
+  width: auto;
+}
+
+.form__field input:focus {
+  border-color: var(--primary-color);
+}
+
+.form__field .error,
+.form__field .error:focus {
+  border-color: var(--error-color);
+  background: var(--error-background-color);
 }

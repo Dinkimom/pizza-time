@@ -66,7 +66,7 @@ export const Cart = () => {
       {(!isEmpty && (
         <>
           <h3 className='cart__delivery'>
-            Delivery costs:{' '}
+            Delivery:{' '}
             <span>
               {deliveryCost[currency.current]}
               {currency.symbol}

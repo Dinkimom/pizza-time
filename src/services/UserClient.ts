@@ -6,8 +6,8 @@ export class UserClient extends AbstractClient {
     super('user');
   }
 
-  public login = (data: LoginDTO) => {
-    this.sleep(1000);
+  public login = async (data: LoginDTO) => {
+    await this.sleep(1000);
 
     return {
       success: true,

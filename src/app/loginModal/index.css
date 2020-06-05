@@ -1,0 +1,14 @@
+.login-modal {
+  width: 90%;
+  max-width: 500px;
+}
+
+.login-modal button[type='submit'] {
+  width: 100%;
+  max-width: 200px;
+  margin-top: 20px;
+}
+
+.login-modal .form__field input {
+  width: calc(100% - 150px);
+}

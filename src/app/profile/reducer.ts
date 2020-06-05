@@ -33,6 +33,7 @@ export class ProfileReducer implements IReducerPayloaded<IProfileState> {
       case types.PROFILE_LOGIN_SUCCESS:
         newState.response = ResponseTypesEnum.Success;
         newState.user = action.payload;
+        newState.isOpened = false;
         break;
       case types.PROFILE_LOGIN_ERROR:
         newState.response = ResponseTypesEnum.Error;
