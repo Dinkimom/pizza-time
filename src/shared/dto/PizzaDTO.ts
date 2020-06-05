@@ -1,12 +1,11 @@
+import { ICurrency } from '../types/ICurrency';
+
 export interface PizzaDTO {
   id: string;
   name: string;
   description: string;
   options: {
-    price: {
-      usd: number;
-      eur: number;
-    };
+    price: ICurrency;
     weight: number;
     size: number;
   }[];

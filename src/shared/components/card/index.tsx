@@ -1,6 +1,7 @@
 import React from 'react';
 import { PizzaDTO } from '../../dto/PizzaDTO';
 import './index.css';
+import { useCurrency } from '../../hooks/useCurrency';
 
 interface ICardProps {
   handleClick: (...args: any) => void;
@@ -8,6 +9,8 @@ interface ICardProps {
 }
 
 export const Card = ({ handleClick, record }: ICardProps) => {
+  const currency = useCurrency();
+
   return (
     <div className='card'>
       <div className='card__image'>
@@ -18,7 +21,8 @@ export const Card = ({ handleClick, record }: ICardProps) => {
       <p className='card__description'>{record.description}</p>
       <div className='card__footer'>
         <p className='card__footer__price'>
-          From {record.options[0].price.eur}&#8364;
+          From {record.options[0].price[currency.current]}
+          {currency.symbol}
         </p>
         <button className='primary-button' onClick={handleClick}>
           Choose

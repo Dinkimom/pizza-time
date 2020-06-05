@@ -7,24 +7,34 @@
   color: var(--primary-color);
 }
 
-.cart__total-title {
+.cart__delivery {
+  padding: 20px 0;
+  border-top: 1px solid var(--gray-color);
+  border-bottom: 1px solid var(--gray-color);
+}
+
+.cart__total {
   margin: 10px 0 0 0;
+}
+
+.cart h2 span,
+.cart h3 span {
+  color: var(--primary-color);
+}
+
+.cart h3 {
+  font-weight: 400;
+}
+
+.cart__price {
+  color: var(--gray-font-color);
+  margin: 0 0 20px 0;
 }
 
 .cart__controls {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 20px;
-}
-
-.cart__price--eur {
-  color: var(--primary-color);
-}
-
-.cart__price--usd {
-  color: var(--gray-font-color);
-  margin: 0 0 20px 0;
-  font-size: 1.3rem;
 }
 
 .cart__controls button {

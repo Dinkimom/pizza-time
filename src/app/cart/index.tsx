@@ -7,15 +7,27 @@ import './index.css';
 import { OptionsEnum } from '../../shared/types/OptionsEnum';
 import { cartActions } from './actions';
 import { NavLink } from 'react-router-dom';
+import { maxOrdersCount } from '../../shared/constants/maxOrdersCount';
+import { useCurrency } from '../../shared/hooks/useCurrency';
+import { currences } from '../../shared/constants/currences';
 
 export const Cart = () => {
   const dispatch = useDispatch();
 
-  const { orders, isFetching, error, total } = useSelector(
-    (state: IRootState) => state.cart,
-  );
+  const {
+    orders,
+    isFetching,
+    error,
+    total,
+    quantity,
+    deliveryCost,
+  } = useSelector((state: IRootState) => state.cart);
 
   const isEmpty = orders.length === 0;
+
+  const isLimitReached = quantity === maxOrdersCount;
+
+  const currency = useCurrency();
 
   const handleIncrement = (id: string, option: OptionsEnum) => {
     dispatch(cartActions.incrementOrder({ id, option }));
@@ -31,7 +43,7 @@ export const Cart = () => {
 
   const renderOrders = () => {
     if (isEmpty) {
-      return <p className='cart__no-pizza'>There are no pizza yet</p>;
+      return <p className='cart__no-pizza'>There is no pizza yet</p>;
     }
 
     return orders.map((item, index) => (
@@ -41,6 +53,7 @@ export const Cart = () => {
         onRemove={handleRemove}
         record={item}
         key={index}
+        disabled={isLimitReached}
       />
     ));
   };
@@ -52,10 +65,25 @@ export const Cart = () => {
 
       {(!isEmpty && (
         <>
-          <h2 className='cart__total-title'>
-            Total: <span className='cart__price--eur'>{total.eur}&#8364;</span>
+          <h3 className='cart__delivery'>
+            Delivery costs:{' '}
+            <span>
+              {deliveryCost[currency.current]}
+              {currency.symbol}
+            </span>
+          </h3>
+
+          <h2 className='cart__total'>
+            Total:{' '}
+            <span>
+              {total[currency.current]}
+              {currency.symbol}
+            </span>
           </h2>
-          <p className='cart__price--usd'>or {total.usd}&#36;</p>
+          <p className='cart__price'>
+            or {total[currency.current === 'eur' ? 'usd' : 'eur']}
+            {currency.current === 'eur' ? currences.usd : currences.eur}
+          </p>
           <div className='cart__controls'>
             <button className='primary-button--active'>Order</button>
             <NavLink to='/'>
@@ -65,7 +93,7 @@ export const Cart = () => {
         </>
       )) || (
         <NavLink to='/'>
-          <button className='secondary-button'>Back to menu</button>
+          <button className='secondary-button'>Go to menu</button>
         </NavLink>
       )}
     </Container>

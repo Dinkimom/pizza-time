@@ -1,4 +1,4 @@
-import { Currency } from './../../shared/types/Currency';
+import { ICurrency } from './../../shared/types/ICurrency';
 import { OrderDTO } from './../../shared/dto/OrderDTO';
 
 export interface ICartState {
@@ -6,5 +6,7 @@ export interface ICartState {
   isFetching: boolean;
   error: string;
   success: boolean | null;
-  total: Currency;
+  total: ICurrency;
+  quantity: number;
+  deliveryCost: ICurrency;
 }

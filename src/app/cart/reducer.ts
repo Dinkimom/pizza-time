@@ -1,5 +1,7 @@
+import { ICurrency } from '../../shared/types/ICurrency';
 import { IActionPayloaded } from '../../store/IAction';
 import { IReducerPayloaded } from '../../store/IReducer';
+import { maxOrdersCount } from './../../shared/constants/maxOrdersCount';
 import { OrderDTO } from './../../shared/dto/OrderDTO';
 import { OptionsEnum } from './../../shared/types/OptionsEnum';
 import { ICartState } from './state';
@@ -13,6 +15,11 @@ const initialState: ICartState = {
   total: {
     usd: 0,
     eur: 0,
+  },
+  quantity: 0,
+  deliveryCost: {
+    eur: 8,
+    usd: 7,
   },
 };
 
@@ -35,31 +42,43 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
 
     switch (action.type) {
       case types.CART_ADD_ORDER:
-        order = this.filterOrders(
-          newState.orders,
-          action.payload.pizza.id,
-          action.payload.option,
-        );
+        if (newState.quantity !== maxOrdersCount) {
+          order = this.filterOrders(
+            newState.orders,
+            action.payload.pizza.id,
+            action.payload.option,
+          );
 
-        if (order === null) {
-          newState.orders = newState.orders.concat([action.payload]);
-        } else {
-          order.quantity = order.quantity + 1;
+          if (order === null) {
+            newState.orders = newState.orders.concat([action.payload]);
+          } else {
+            order.quantity = order.quantity + action.payload.quantity;
+          }
+          this.saveOrders(newState.orders);
+          newState.total = this.calculateTotal(
+            newState.orders,
+            newState.deliveryCost,
+          );
+          newState.quantity = this.countOrders(newState.orders);
         }
-        this.saveOrders(newState.orders);
-        newState.total = this.calculateTotal(newState.orders);
         break;
 
       case types.CART_INCREMENT_ORDER:
-        order = this.filterOrders(
-          newState.orders,
-          action.payload.id,
-          action.payload.option,
-        ) as OrderDTO;
+        if (newState.quantity !== maxOrdersCount) {
+          order = this.filterOrders(
+            newState.orders,
+            action.payload.id,
+            action.payload.option,
+          ) as OrderDTO;
 
-        order.quantity = order.quantity + 1;
-        this.saveOrders(newState.orders);
-        newState.total = this.calculateTotal(newState.orders);
+          order.quantity = order.quantity + 1;
+          this.saveOrders(newState.orders);
+          newState.total = this.calculateTotal(
+            newState.orders,
+            newState.deliveryCost,
+          );
+          newState.quantity = this.countOrders(newState.orders);
+        }
         break;
 
       case types.CART_DECREMENT_ORDER:
@@ -78,7 +97,11 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
           );
         }
         this.saveOrders(newState.orders);
-        newState.total = this.calculateTotal(newState.orders);
+        newState.total = this.calculateTotal(
+          newState.orders,
+          newState.deliveryCost,
+        );
+        newState.quantity = this.countOrders(newState.orders);
         break;
 
       case types.CART_REMOVE_ORDER:
@@ -88,13 +111,21 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
           action.payload.option,
         );
         this.saveOrders(newState.orders);
-        newState.total = this.calculateTotal(newState.orders);
+        newState.total = this.calculateTotal(
+          newState.orders,
+          newState.deliveryCost,
+        );
+        newState.quantity = this.countOrders(newState.orders);
         break;
 
       case types.CART_REMEMBER_ORDERS:
         newState.orders =
           JSON.parse(localStorage.getItem('orders') as string) || [];
-        newState.total = this.calculateTotal(newState.orders);
+        newState.total = this.calculateTotal(
+          newState.orders,
+          newState.deliveryCost,
+        );
+        newState.quantity = this.countOrders(newState.orders);
         break;
 
       case types.CART_SET_FETCHING:
@@ -144,7 +175,7 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
     localStorage.setItem('orders', JSON.stringify(orders));
   };
 
-  public calculateTotal = (orders: OrderDTO[]) => {
+  public calculateTotal = (orders: OrderDTO[], deliveryCost: ICurrency) => {
     let usd = 0;
     let eur = 0;
 
@@ -153,9 +184,22 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
       eur = eur + item.pizza.options[item.option].price.eur * item.quantity;
     });
 
+    usd = usd + deliveryCost.usd;
+    eur = eur + deliveryCost.eur;
+
     return {
       usd,
       eur,
     };
+  };
+
+  public countOrders = (orders: OrderDTO[]) => {
+    let quantity = 0;
+
+    orders.forEach((item) => {
+      quantity = quantity + item.quantity;
+    });
+
+    return quantity;
   };
 }

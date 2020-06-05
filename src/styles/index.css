@@ -66,6 +66,16 @@ button {
   color: white;
 }
 
+.primary-button:disabled {
+  color: var(--gray-font-color);
+  border-color: var(--gray-font-color);
+  cursor: not-allowed;
+}
+
+.primary-button:disabled:hover {
+  background: none;
+}
+
 .secondary-button {
   border: 1px solid var(--gray-color);
   background: none;

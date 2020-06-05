@@ -6,22 +6,18 @@ import * as pathes from '../../constants/pathes';
 import './index.css';
 
 export const CartButton = () => {
-  const { orders } = useSelector((state: IRootState) => state.cart);
+  const { quantity } = useSelector((state: IRootState) => state.cart);
 
   const renderInner = () => {
-    if (orders.length === 0) {
-      return <p className='cart-button__text fluid'>Cart</p>;
+    if (quantity === 0) {
+      return <p className='cart-button__text empty'>Cart</p>;
     } else {
-      let quantity = 0;
-
-      orders.forEach((item) => {
-        quantity = quantity + item.quantity;
-      });
-
       return (
         <>
-          <p className='cart-button__quantity'>{quantity}</p>
           <p className='cart-button__text'>Cart</p>
+          <div className='cart-button__divider'></div>
+          <p className='cart-button__quantity'>{quantity}</p>
+          <span className='cart-button__arrow'>&#8594;</span>
         </>
       );
     }

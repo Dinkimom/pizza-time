@@ -44,3 +44,15 @@
 .selection-modal__confirm {
   width: 100%;
 }
+
+.selection-modal__footer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 10px;
+}
+
+.selection-modal__footer__quantity__value {
+  font-size: 1.3rem;
+  width: 40px;
+  display: inline-block;
+}

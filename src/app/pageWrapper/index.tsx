@@ -5,6 +5,7 @@ import { CartButton } from '../../shared/components/cartButton';
 import * as pathes from '../../shared/constants/pathes';
 import { IRootState } from '../../store/state';
 import { cartActions } from '../cart/actions';
+import { Currency } from '../currency';
 import './index.css';
 
 interface IPageWrapperProps {
@@ -34,6 +35,7 @@ export const PageWrapper = ({ children }: IPageWrapperProps) => {
           </NavLink>
 
           <div className='page-wrapper__header__control-block'>
+            <Currency />
             <CartButton />
             <button className='login-button secondary-button'>Login</button>
           </div>

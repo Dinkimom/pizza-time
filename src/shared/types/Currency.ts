@@ -1,4 +1,1 @@
-export interface Currency {
-  eur: number;
-  usd: number;
-}
+export type Currency = 'eur' | 'usd';

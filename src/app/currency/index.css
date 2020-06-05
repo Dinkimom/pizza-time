@@ -1,0 +1,23 @@
+.currency {
+  display: flex;
+  color: var(--gray-font-color);
+  font-size: 2rem;
+}
+
+.currency span {
+  display: block;
+  width: 30px;
+  cursor: pointer;
+}
+
+.currency span:hover {
+  color: var(--primary-color);
+}
+
+.currency .active {
+  color: var(--primary-color);
+}
+
+.currency .active:hover {
+  color: var(--primary-hovered-color);
+}
