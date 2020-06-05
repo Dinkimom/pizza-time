@@ -1,6 +1,10 @@
-import React, { ReactNode } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { CART } from '../../shared/constants/pathes';
+import React, { ReactNode, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { CartButton } from '../../shared/components/cartButton';
+import * as pathes from '../../shared/constants/pathes';
+import { IRootState } from '../../store/state';
+import { cartActions } from '../cart/actions';
 import './index.css';
 
 interface IPageWrapperProps {
@@ -8,29 +12,29 @@ interface IPageWrapperProps {
 }
 
 export const PageWrapper = ({ children }: IPageWrapperProps) => {
-  const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  const { orders } = useSelector((state: IRootState) => state.cart);
 
-  const isCartPath = pathname === CART;
+  useEffect(() => {
+    if (orders.length === 0 && localStorage.getItem('orders')) {
+      dispatch(cartActions.rememberOrders());
+    }
+  }, [dispatch, orders.length]);
 
   return (
     <div className='page-wrapper'>
       <header className='page-wrapper__header'>
         <div className='container'>
-          <Link to='/'>
+          <NavLink to={pathes.ROOT}>
             <img
               src='./images/logo.svg'
               alt='logo'
               className='page-wrapper__header__logo'
             />
-          </Link>
+          </NavLink>
+
           <div className='page-wrapper__header__control-block'>
-            <button
-              className={`cart-button primary-button ${
-                isCartPath ? 'none' : null
-              }`}
-            >
-              Cart
-            </button>
+            <CartButton />
             <button className='login-button secondary-button'>Login</button>
           </div>
         </div>

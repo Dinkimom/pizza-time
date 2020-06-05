@@ -1,7 +1,8 @@
+import { PizzaDTO } from './PizzaDTO';
 import { OptionsEnum } from './../types/OptionsEnum';
 
 export interface OrderDTO {
-  pizza_id: string;
+  pizza: PizzaDTO;
   option: OptionsEnum;
   quantity: number;
 }

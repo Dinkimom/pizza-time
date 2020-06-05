@@ -1,0 +1,8 @@
+.cart.container {
+  max-width: 800px;
+}
+
+.cart__no-pizza {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}

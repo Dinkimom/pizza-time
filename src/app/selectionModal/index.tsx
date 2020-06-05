@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../../shared/components/modal';
 import { sizes } from '../../shared/constants/sizes';
-import { SizesEnum } from '../../shared/types/SizesEnum';
 import { IRootState } from '../../store/state';
 import { menuActions } from '../menu/actions';
 import './index.css';
+import { OptionsEnum } from '../../shared/types/OptionsEnum';
+import { cartActions } from '../cart/actions';
+import { PizzaDTO } from '../../shared/dto/PizzaDTO';
 
 export const SelectionModal = () => {
   const [option, setOption] = useState(0);
@@ -18,10 +20,23 @@ export const SelectionModal = () => {
 
   const handleClose = () => {
     dispatch(menuActions.closePizza());
+    setOption(0);
   };
 
-  const handleOptionSelect = (option: SizesEnum) => {
+  const handleOptionSelect = (option: OptionsEnum) => {
     setOption(option);
+  };
+
+  const handleChoose = () => {
+    dispatch(
+      cartActions.addOrder({
+        pizza: currentPizza as PizzaDTO,
+        option,
+        quantity: 1,
+      }),
+    );
+    dispatch(menuActions.closePizza());
+    setOption(0);
   };
 
   const renderContorls = () => (
@@ -57,7 +72,10 @@ export const SelectionModal = () => {
 
       {renderContorls()}
 
-      <button className='selection-modal__confirm primary-button'>
+      <button
+        className='selection-modal__confirm primary-button'
+        onClick={handleChoose}
+      >
         Add to cart for {currentPizza?.options[option].price.eur}&#8364;
       </button>
     </Modal>

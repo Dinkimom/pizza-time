@@ -1,0 +1,29 @@
+.cart-button {
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-button p {
+  margin: 0;
+}
+
+.cart-button__text {
+  width: 55%;
+  text-decoration: none;
+  margin: 0 auto;
+}
+
+.cart-button__text.fluid {
+  width: 100%;
+}
+
+.cart-button__quantity {
+  width: 45%;
+  border-right: 1px solid var(--primary-color);
+  transition: border 0.5s;
+}
+
+.cart-button:hover .cart-button__quantity {
+  border-right: 1px solid white;
+}

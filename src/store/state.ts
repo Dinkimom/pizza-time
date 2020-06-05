@@ -1,5 +1,7 @@
-import { IMenuState } from '../app/menu/state'
+import { ICartState } from './../app/cart/state';
+import { IMenuState } from '../app/menu/state';
 
 export interface IRootState {
-  menu: IMenuState
+  menu: IMenuState;
+  cart: ICartState;
 }

@@ -5,7 +5,9 @@ import { menuActions } from './actions';
 import * as types from './types';
 
 export class MenuApiSaga {
-  public constructor() {}
+  public constructor() {
+    this.loadData = this.loadData.bind(this);
+  }
 
   public static Initialize() {
     const saga = new MenuApiSaga();

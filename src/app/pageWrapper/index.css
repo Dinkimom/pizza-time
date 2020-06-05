@@ -19,6 +19,10 @@
   justify-content: space-between;
 }
 
+.page-wrapper__header__control-block {
+  display: flex;
+}
+
 .page-wrapper__header__control-block button {
   margin-left: 20px;
   min-width: 80px;
@@ -34,11 +38,21 @@
 
 @media screen and (max-width: 480px) {
   .page-wrapper__header__logo {
-    width: 70px;
+    width: 90px;
     height: auto;
   }
 
   .page-wrapper__header__control-block button {
     margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .page-wrapper__header {
+    height: 75px;
+  }
+
+  .page-wrapper__main {
+    margin-top: 75px;
   }
 }

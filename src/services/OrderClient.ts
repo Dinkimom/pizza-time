@@ -1,5 +1,4 @@
 import { ConfirmOderDTO } from './../shared/dto/ConfirmOrderDTO';
-import { OrderDTO } from './../shared/dto/OrderDTO';
 import { AbstractClient } from './AbstractClient';
 
 export class OrderClient extends AbstractClient {
@@ -7,15 +6,15 @@ export class OrderClient extends AbstractClient {
     super('order');
   }
 
-  public getOrders = (): OrderDTO[] => {
-    return [];
+  public confirmOrder = (data: ConfirmOderDTO) => {
+    this.sleep(1000);
+
+    return {
+      success: true,
+    };
   };
 
-  public addToOrder = (data: OrderDTO) => {};
-
-  public removeFromOrder = (data: string) => {};
-
-  public updateOrder = (data: OrderDTO) => {};
-
-  public confirmOrder = (data: ConfirmOderDTO) => {};
+  public getOrders = (data: string) => {
+    this.sleep(1000);
+  };
 }
