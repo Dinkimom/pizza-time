@@ -6,13 +6,16 @@ import { IRootState } from '../../store/state';
 import './index.css';
 import { OptionsEnum } from '../../shared/types/OptionsEnum';
 import { cartActions } from './actions';
+import { NavLink } from 'react-router-dom';
 
 export const Cart = () => {
   const dispatch = useDispatch();
 
-  const { orders, isFetching, error } = useSelector(
+  const { orders, isFetching, error, total } = useSelector(
     (state: IRootState) => state.cart,
   );
+
+  const isEmpty = orders.length === 0;
 
   const handleIncrement = (id: string, option: OptionsEnum) => {
     dispatch(cartActions.incrementOrder({ id, option }));
@@ -27,7 +30,7 @@ export const Cart = () => {
   };
 
   const renderOrders = () => {
-    if (orders.length === 0) {
+    if (isEmpty) {
       return <p className='cart__no-pizza'>There are no pizza yet</p>;
     }
 
@@ -47,7 +50,24 @@ export const Cart = () => {
       <h2>Cart</h2>
       {renderOrders()}
 
-      <h2>Total</h2>
+      {(!isEmpty && (
+        <>
+          <h2 className='cart__total-title'>
+            Total: <span className='cart__price--eur'>{total.eur}&#8364;</span>
+          </h2>
+          <p className='cart__price--usd'>or {total.usd}&#36;</p>
+          <div className='cart__controls'>
+            <button className='primary-button--active'>Order</button>
+            <NavLink to='/'>
+              <button className='secondary-button'>Back to menu</button>
+            </NavLink>
+          </div>
+        </>
+      )) || (
+        <NavLink to='/'>
+          <button className='secondary-button'>Back to menu</button>
+        </NavLink>
+      )}
     </Container>
   );
 };

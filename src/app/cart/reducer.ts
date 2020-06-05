@@ -10,6 +10,10 @@ const initialState: ICartState = {
   isFetching: false,
   error: '',
   success: null,
+  total: {
+    usd: 0,
+    eur: 0,
+  },
 };
 
 export class CartReducer implements IReducerPayloaded<ICartState> {
@@ -43,6 +47,7 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
           order.quantity = order.quantity + 1;
         }
         this.saveOrders(newState.orders);
+        newState.total = this.calculateTotal(newState.orders);
         break;
 
       case types.CART_INCREMENT_ORDER:
@@ -54,6 +59,7 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
 
         order.quantity = order.quantity + 1;
         this.saveOrders(newState.orders);
+        newState.total = this.calculateTotal(newState.orders);
         break;
 
       case types.CART_DECREMENT_ORDER:
@@ -72,6 +78,7 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
           );
         }
         this.saveOrders(newState.orders);
+        newState.total = this.calculateTotal(newState.orders);
         break;
 
       case types.CART_REMOVE_ORDER:
@@ -81,11 +88,13 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
           action.payload.option,
         );
         this.saveOrders(newState.orders);
+        newState.total = this.calculateTotal(newState.orders);
         break;
 
       case types.CART_REMEMBER_ORDERS:
         newState.orders =
           JSON.parse(localStorage.getItem('orders') as string) || [];
+        newState.total = this.calculateTotal(newState.orders);
         break;
 
       case types.CART_SET_FETCHING:
@@ -133,5 +142,20 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
 
   public saveOrders = (orders: OrderDTO[]) => {
     localStorage.setItem('orders', JSON.stringify(orders));
+  };
+
+  public calculateTotal = (orders: OrderDTO[]) => {
+    let usd = 0;
+    let eur = 0;
+
+    orders.forEach((item) => {
+      usd = usd + item.pizza.options[item.option].price.usd * item.quantity;
+      eur = eur + item.pizza.options[item.option].price.eur * item.quantity;
+    });
+
+    return {
+      usd,
+      eur,
+    };
   };
 }

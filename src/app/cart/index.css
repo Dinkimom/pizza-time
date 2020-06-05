@@ -6,3 +6,27 @@
   font-size: 1.5rem;
   color: var(--primary-color);
 }
+
+.cart__total-title {
+  margin: 10px 0 0 0;
+}
+
+.cart__controls {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 20px;
+}
+
+.cart__price--eur {
+  color: var(--primary-color);
+}
+
+.cart__price--usd {
+  color: var(--gray-font-color);
+  margin: 0 0 20px 0;
+  font-size: 1.3rem;
+}
+
+.cart__controls button {
+  width: 100%;
+}
