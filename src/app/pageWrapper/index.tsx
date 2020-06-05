@@ -2,10 +2,12 @@ import React, { ReactNode, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { CartButton } from '../../shared/components/cartButton';
+import { LoginButton } from '../../shared/components/loginButton';
 import * as pathes from '../../shared/constants/pathes';
 import { IRootState } from '../../store/state';
 import { cartActions } from '../cart/actions';
 import { Currency } from '../currency';
+import { LoginModal } from '../loginModal';
 import './index.css';
 
 interface IPageWrapperProps {
@@ -37,11 +39,14 @@ export const PageWrapper = ({ children }: IPageWrapperProps) => {
           <div className='page-wrapper__header__control-block'>
             <Currency />
             <CartButton />
-            <button className='login-button secondary-button'>Login</button>
+            <LoginButton />
           </div>
         </div>
       </header>
-      <main className='page-wrapper__main'>{children}</main>
+      <main className='page-wrapper__main'>
+        {children}
+        <LoginModal />
+      </main>
       <footer className='page-wrapper__footer'>
         <div className='container'></div>
       </footer>

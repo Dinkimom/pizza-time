@@ -6,12 +6,13 @@ import { OrderDTO } from './../../shared/dto/OrderDTO';
 import { OptionsEnum } from './../../shared/types/OptionsEnum';
 import { ICartState } from './state';
 import * as types from './types';
+import { ResponseTypesEnum } from '../../shared/types/ResponseTypesEnum';
 
 const initialState: ICartState = {
   orders: [],
   isFetching: false,
   error: '',
-  success: null,
+  response: ResponseTypesEnum.NotSubmitted,
   total: {
     usd: 0,
     eur: 0,
@@ -137,12 +138,12 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
         break;
 
       case types.CART_CONFIRM_SUCCESS:
-        newState.success = true;
+        newState.response = ResponseTypesEnum.Success;
         newState.orders = [];
         break;
 
       case types.CART_CONFIRM_ERROR:
-        newState.success = false;
+        newState.response = ResponseTypesEnum.Error;
         break;
     }
 

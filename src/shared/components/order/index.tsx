@@ -1,11 +1,9 @@
 import React from 'react';
 import { OrderDTO } from '../../dto/OrderDTO';
+import { useCurrency } from '../../hooks/useCurrency';
+import { OptionsEnum } from '../../types/OptionsEnum';
 import './index.css';
 import trashIcon from './trash.svg';
-import { OptionsEnum } from '../../types/OptionsEnum';
-import { useSelector } from 'react-redux';
-import { IRootState } from '../../../store/state';
-import { useCurrency } from '../../hooks/useCurrency';
 
 interface IOrderProps {
   record: OrderDTO;

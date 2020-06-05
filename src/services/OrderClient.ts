@@ -16,5 +16,10 @@ export class OrderClient extends AbstractClient {
 
   public getOrders = (data: string) => {
     this.sleep(1000);
+
+    return {
+      success: true,
+      data: [],
+    };
   };
 }

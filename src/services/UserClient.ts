@@ -6,7 +6,16 @@ export class UserClient extends AbstractClient {
     super('user');
   }
 
-  public login = (data: LoginDTO) => {};
+  public login = (data: LoginDTO) => {
+    this.sleep(1000);
 
-  public logout = (data: string) => {};
+    return {
+      success: true,
+      data: {
+        id: '0',
+        phone: '+79044321539',
+        name: 'Test',
+      },
+    };
+  };
 }
