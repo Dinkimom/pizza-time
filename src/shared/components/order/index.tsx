@@ -8,9 +8,10 @@ import trashIcon from './trash.svg';
 interface IOrderProps {
   record: OrderDTO;
   disabled?: boolean;
-  onIncrement: (id: string, option: OptionsEnum) => void;
-  onDecrement: (id: string, option: OptionsEnum) => void;
-  onRemove: (id: string, option: OptionsEnum) => void;
+  onIncrement?: (id: string, option: OptionsEnum) => void;
+  onDecrement?: (id: string, option: OptionsEnum) => void;
+  onRemove?: (id: string, option: OptionsEnum) => void;
+  history?: boolean;
 }
 
 export const Order = ({
@@ -19,6 +20,7 @@ export const Order = ({
   onDecrement,
   onRemove,
   disabled,
+  history,
 }: IOrderProps) => {
   const currency = useCurrency();
 
@@ -37,34 +39,44 @@ export const Order = ({
           {size}cm, {weight}g
         </p>
       </div>
-      <div className='order__controls'>
-        <button
-          className='primary-button'
-          onClick={() => onDecrement(record.pizza.id, record.option)}
-        >
-          &#8722;
-        </button>
-        <span className='order__contorls__quantity'>{record.quantity}</span>
-        <button
-          className='primary-button'
-          onClick={() => onIncrement(record.pizza.id, record.option)}
-          disabled={disabled}
-        >
-          &#43;
-        </button>
-      </div>
+      {history ? (
+        <span className='order__quantity'>{record.quantity} pc.</span>
+      ) : (
+        <div className='order__controls'>
+          <button
+            className='primary-button'
+            onClick={() =>
+              onDecrement && onDecrement(record.pizza.id, record.option)
+            }
+          >
+            &#8722;
+          </button>
+          <span className='order__controls__quantity'>{record.quantity}</span>
+          <button
+            className='primary-button'
+            onClick={() =>
+              onIncrement && onIncrement(record.pizza.id, record.option)
+            }
+            disabled={disabled}
+          >
+            &#43;
+          </button>
+        </div>
+      )}
 
       <p className='order__price'>
         {price[currency.current] * record.quantity}
         {currency.symbol}
       </p>
 
-      <img
-        src={trashIcon}
-        alt='remove'
-        className='order__remove'
-        onClick={() => onRemove(record.pizza.id, record.option)}
-      />
+      {history ? null : (
+        <img
+          src={trashIcon}
+          alt='remove'
+          className='order__remove'
+          onClick={() => onRemove && onRemove(record.pizza.id, record.option)}
+        />
+      )}
     </div>
   );
 };

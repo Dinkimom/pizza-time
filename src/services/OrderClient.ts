@@ -1,3 +1,4 @@
+import { userHistory } from './../shared/constants/userHistory';
 import { ConfirmOderDTO } from './../shared/dto/ConfirmOrderDTO';
 import { AbstractClient } from './AbstractClient';
 
@@ -19,7 +20,7 @@ export class OrderClient extends AbstractClient {
 
     return {
       success: true,
-      data: [],
+      data: userHistory,
     };
   };
 }

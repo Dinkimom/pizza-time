@@ -34,7 +34,8 @@
   font-size: 1.1rem;
 }
 
-.order__contorls__quantity {
+.order__controls__quantity,
+.order__quantity {
   font-size: 1.3rem;
   width: 50px;
   display: inline-block;
@@ -59,7 +60,7 @@
     width: 20vw;
   }
 
-  .order__contorls__quantity {
+  .order__controls__quantity {
     width: 30px;
   }
 }
@@ -73,7 +74,7 @@
     width: 15vw;
   }
 
-  .order__contorls__quantity {
+  .order__controls__quantity {
     width: 20px;
   }
 
