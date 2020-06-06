@@ -16,6 +16,7 @@
 body {
   padding: 0;
   margin: 0;
+  min-width: 320px;
 }
 
 .container {
@@ -25,16 +26,6 @@ body {
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
-}
-
-.container h1 {
-  font-size: 2.3rem;
-  font-weight: 400;
-}
-
-.container h2 {
-  font-size: 2rem;
-  font-weight: 400;
 }
 
 * {

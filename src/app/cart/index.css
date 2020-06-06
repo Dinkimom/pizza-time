@@ -11,6 +11,7 @@
   padding: 20px 0;
   border-top: 1px solid var(--gray-color);
   border-bottom: 1px solid var(--gray-color);
+  margin: 0 0 20px 0;
 }
 
 .cart__total {

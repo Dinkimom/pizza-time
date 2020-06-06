@@ -132,11 +132,11 @@ export const SelectionModal = () => {
           disabled={isLimitReached}
         >
           {isLimitReached ? (
-            'Maximum limit reached'
+            'Limit reached'
           ) : (
             <>
               {' '}
-              Add to cart for{' '}
+              Add for{' '}
               {(currentPizza?.options[option].price[currency.current] || 0) *
                 quantity}
               {currency.symbol}

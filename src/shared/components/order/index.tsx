@@ -33,55 +33,89 @@ export const Order = ({
 
   return (
     <div className='order'>
-      <Image
-        src={pizzaImage}
-        alt={record.pizza.name}
-        className='order__image'
-      />
-      <div className='order__info'>
-        <p className='order__info__name'>{record.pizza.name}</p>
-        <p className='order__info__details'>
-          {size}cm, {weight}g
-        </p>
-      </div>
-      {history ? (
-        <span className='order__quantity'>{record.quantity} pc.</span>
-      ) : (
-        <div className='order__controls'>
-          <Button
-            primary={true}
-            onClick={() =>
-              onDecrement && onDecrement(record.pizza.id, record.option)
-            }
-          >
-            &#8722;
-          </Button>
-          <span className='order__controls__quantity'>{record.quantity}</span>
-          <Button
-            primary={true}
-            onClick={() =>
-              onIncrement && onIncrement(record.pizza.id, record.option)
-            }
-            disabled={disabled}
-          >
-            &#43;
-          </Button>
-        </div>
-      )}
-
-      <p className='order__price'>
-        {price[currency.current] * record.quantity}
-        {currency.symbol}
-      </p>
-
-      {history ? null : (
-        <img
-          src={trashIcon}
-          alt='remove'
-          className='order__remove'
-          onClick={() => onRemove && onRemove(record.pizza.id, record.option)}
+      <div className='order__first-row'>
+        <Image
+          src={pizzaImage}
+          alt={record.pizza.name}
+          className='order__image'
         />
-      )}
+        <div className='order__info'>
+          <p className='order__info__name'>{record.pizza.name}</p>
+          <p className='order__info__details'>
+            {size}cm, {weight}g
+          </p>
+        </div>
+        {history ? (
+          <span className='order__quantity'>{record.quantity} pc.</span>
+        ) : (
+          <div className='order__controls'>
+            <Button
+              primary={true}
+              onClick={() =>
+                onDecrement && onDecrement(record.pizza.id, record.option)
+              }
+            >
+              &#8722;
+            </Button>
+            <span className='order__controls__quantity'>{record.quantity}</span>
+            <Button
+              primary={true}
+              onClick={() =>
+                onIncrement && onIncrement(record.pizza.id, record.option)
+              }
+              disabled={disabled}
+            >
+              &#43;
+            </Button>
+          </div>
+        )}
+
+        <p className='order__price'>
+          {price[currency.current] * record.quantity}
+          {currency.symbol}
+        </p>
+
+        {history ? null : (
+          <img
+            src={trashIcon}
+            alt='remove'
+            className='order__remove'
+            onClick={() => onRemove && onRemove(record.pizza.id, record.option)}
+          />
+        )}
+      </div>
+      <div className={`order__second-row ${history ? 'none' : ''}`}>
+        {!history && (
+          <div className='order__controls'>
+            <Button
+              primary={true}
+              onClick={() =>
+                onDecrement && onDecrement(record.pizza.id, record.option)
+              }
+            >
+              &#8722;
+            </Button>
+            <span className='order__controls__quantity'>{record.quantity}</span>
+            <Button
+              primary={true}
+              onClick={() =>
+                onIncrement && onIncrement(record.pizza.id, record.option)
+              }
+              disabled={disabled}
+            >
+              &#43;
+            </Button>
+          </div>
+        )}
+
+        {history ? null : (
+          <Button
+            onClick={() => onRemove && onRemove(record.pizza.id, record.option)}
+          >
+            Remove
+          </Button>
+        )}
+      </div>
     </div>
   );
 };

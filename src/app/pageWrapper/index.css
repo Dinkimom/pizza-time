@@ -36,26 +36,6 @@
   background: var(--dark-gray-color);
 }
 
-@media screen and (max-width: 480px) {
-  .page-wrapper__header .container {
-    padding: 10px;
-  }
-
-  .page-wrapper__header__logo {
-    width: 56px;
-    height: 40px;
-    padding-left: 56px;
-    display: block;
-    background-image: url('./mobile-logo.svg');
-    background-repeat: no-repeat;
-    box-sizing: border-box;
-  }
-
-  .page-wrapper__header__control-block button {
-    margin-left: 10px;
-  }
-}
-
 @media screen and (max-width: 768px) {
   .page-wrapper__header {
     height: 75px;
@@ -63,5 +43,42 @@
 
   .page-wrapper__main {
     margin-top: 75px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .page-wrapper {
+    grid-template-rows: minmax(calc(100vh), auto) 130px;
+  }
+
+  .page-wrapper__header {
+    height: 110px;
+  }
+
+  .page-wrapper__header .container {
+    padding: 60px 10px 10px 10px;
+    height: auto;
+  }
+
+  .page-wrapper__header__logo {
+    box-sizing: border-box;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: 90px;
+    transform: translateX(-50%);
+  }
+
+  .page-wrapper__header__control-block {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .page-wrapper__header__control-block button {
+    margin-left: 10px;
+  }
+
+  .page-wrapper__main {
+    margin-top: 110px;
   }
 }

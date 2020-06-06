@@ -12,3 +12,21 @@
 .login-modal .form__field input {
   width: calc(100% - 150px);
 }
+
+@media screen and (max-width: 480px) {
+  .login-modal .form__field {
+    flex-direction: column;
+    text-align: left !important;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .login-modal .form__field input {
+    width: 90%;
+    margin: 0;
+  }
+
+  .login-modal button[type='submit'] {
+    margin-top: 10px;
+  }
+}

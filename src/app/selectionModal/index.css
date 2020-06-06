@@ -51,6 +51,11 @@
   grid-column-gap: 10px;
 }
 
+.selection-modal__footer__quantity {
+  display: flex;
+  align-items: center;
+}
+
 .selection-modal__footer__quantity__value {
   font-size: 1.3rem;
   width: 30px;
@@ -58,7 +63,13 @@
 }
 
 @media screen and (max-width: 480px) {
+  .selection-modal__controls button {
+    padding: 10px 5px;
+  }
   .selection-modal__controls__confirm {
     font-size: 0.9rem;
+  }
+  .selection-modal__footer__quantity button {
+    padding: 10px;
   }
 }
