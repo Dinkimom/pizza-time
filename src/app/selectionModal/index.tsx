@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button } from '../../shared/components/button';
+import { Image } from '../../shared/components/image';
 import { Modal } from '../../shared/components/modal';
-import { sizes } from '../../shared/constants/sizes';
-import { IRootState } from '../../store/state';
-import { menuActions } from '../menu/actions';
-import './index.css';
-import { OptionsEnum } from '../../shared/types/OptionsEnum';
-import { cartActions } from '../cart/actions';
-import { PizzaDTO } from '../../shared/dto/PizzaDTO';
 import { maxOrdersCount } from '../../shared/constants/maxOrdersCount';
+import { sizes } from '../../shared/constants/sizes';
+import { PizzaDTO } from '../../shared/dto/PizzaDTO';
 import { useCurrency } from '../../shared/hooks/useCurrency';
 import { useImages } from '../../shared/hooks/useImages';
-import { Button } from '../../shared/components/button';
+import { OptionsEnum } from '../../shared/types/OptionsEnum';
+import { IRootState } from '../../store/state';
+import { cartActions } from '../cart/actions';
+import { menuActions } from '../menu/actions';
+import './index.css';
 
 export const SelectionModal = () => {
   const [option, setOption] = useState(0);
@@ -94,7 +95,7 @@ export const SelectionModal = () => {
       className='selection-modal'
     >
       <div className='selection-modal__image'>
-        <img src={pizzaImage} alt='pizza' />
+        <Image src={pizzaImage} alt='pizza' />
       </div>
       <p className='selection-modal__name'>{currentPizza?.name}</p>
       <p className='selection-modal__info'>

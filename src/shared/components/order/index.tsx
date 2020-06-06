@@ -6,6 +6,7 @@ import { OptionsEnum } from '../../types/OptionsEnum';
 import './index.css';
 import trashIcon from './trash.svg';
 import { Button } from '../button';
+import { Image } from '../image';
 
 interface IOrderProps {
   record: OrderDTO;
@@ -32,7 +33,11 @@ export const Order = ({
 
   return (
     <div className='order'>
-      <img src={pizzaImage} alt={record.pizza.name} className='order__image' />
+      <Image
+        src={pizzaImage}
+        alt={record.pizza.name}
+        className='order__image'
+      />
       <div className='order__info'>
         <p className='order__info__name'>{record.pizza.name}</p>
         <p className='order__info__details'>
