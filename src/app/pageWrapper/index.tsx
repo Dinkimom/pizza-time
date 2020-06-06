@@ -1,10 +1,9 @@
 import React, { ReactNode, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { CartButton } from '../../shared/components/cartButton';
 import { LoginButton } from '../../shared/components/loginButton';
 import * as pathes from '../../shared/constants/pathes';
-import { IRootState } from '../../store/state';
 import { cartActions } from '../cart/actions';
 import { Currency } from '../currency';
 import { LoginModal } from '../loginModal';
@@ -17,13 +16,10 @@ interface IPageWrapperProps {
 
 export const PageWrapper = ({ children }: IPageWrapperProps) => {
   const dispatch = useDispatch();
-  const { orders } = useSelector((state: IRootState) => state.cart);
 
   useEffect(() => {
-    if (orders.length === 0 && localStorage.getItem('orders')) {
-      dispatch(cartActions.rememberOrders());
-    }
-  }, [dispatch, orders.length]);
+    dispatch(cartActions.rememberOrders());
+  }, [dispatch]);
 
   return (
     <div className='page-wrapper'>
