@@ -42,6 +42,10 @@ export const Cart = () => {
     dispatch(cartActions.removeOrder({ id, option }));
   };
 
+  const handleModalOpen = () => {
+    dispatch(cartActions.openModal());
+  };
+
   const renderOrders = () => {
     if (isEmpty) {
       return <p className='cart__no-pizza'>There is no pizza yet</p>;
@@ -86,7 +90,9 @@ export const Cart = () => {
             {currency.current === 'eur' ? currences.usd : currences.eur}
           </p>
           <div className='cart__controls'>
-            <Button active={true}>Order</Button>
+            <Button active={true} onClick={handleModalOpen}>
+              Order
+            </Button>
             <NavLink to='/'>
               <Button>Go to menu</Button>
             </NavLink>

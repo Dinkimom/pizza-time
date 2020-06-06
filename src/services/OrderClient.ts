@@ -7,20 +7,20 @@ export class OrderClient extends AbstractClient {
     super('order');
   }
 
-  public confirmOrder = (data: ConfirmOderDTO) => {
-    this.sleep(1000);
-
-    return {
-      success: true,
-    };
-  };
-
-  public getOrders = (data: string) => {
-    this.sleep(1000);
+  public getOrders = async (data: string) => {
+    await this.sleep(1000);
 
     return {
       success: true,
       data: userHistory,
+    };
+  };
+
+  public confirmOrder = async (data: ConfirmOderDTO) => {
+    await this.sleep(1000);
+
+    return {
+      success: true,
     };
   };
 }

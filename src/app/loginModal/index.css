@@ -1,32 +1,8 @@
-.login-modal {
-  width: 90%;
-  max-width: 500px;
+.login-modal form {
+  display: flex;
+  flex-direction: column;
 }
 
-.login-modal button[type='submit'] {
+.login-modal input {
   width: 100%;
-  max-width: 200px;
-  margin-top: 20px;
-}
-
-.login-modal .form__field input {
-  width: calc(100% - 150px);
-}
-
-@media screen and (max-width: 480px) {
-  .login-modal .form__field {
-    flex-direction: column;
-    text-align: left !important;
-    width: 100%;
-    align-items: flex-start;
-  }
-
-  .login-modal .form__field input {
-    width: 90%;
-    margin: 0;
-  }
-
-  .login-modal button[type='submit'] {
-    margin-top: 10px;
-  }
 }

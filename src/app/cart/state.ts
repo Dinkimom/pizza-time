@@ -6,8 +6,10 @@ export interface ICartState {
   orders: OrderDTO[];
   isFetching: boolean;
   error: string;
-  response: ResponseTypesEnum;
   total: ICurrency;
   quantity: number;
   deliveryCost: ICurrency;
+  isOpened: boolean;
+  isModalFetching: boolean;
+  response: ResponseTypesEnum;
 }

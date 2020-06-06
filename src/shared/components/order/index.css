@@ -70,16 +70,12 @@
     padding: 10px 0;
   }
 
-  .order__image {
-    width: 20vw;
-  }
-
   .order {
     font-size: 14px;
   }
 
   .order__image {
-    width: 15vw;
+    width: 30vw;
   }
 
   .order__first-row .order__controls {

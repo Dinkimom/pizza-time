@@ -37,8 +37,8 @@ body {
   display: none;
 }
 
-.modal h1 {
-  font-weight: 400;
+.hidden {
+  visibility: hidden;
 }
 
 .form__field {
@@ -47,22 +47,22 @@ body {
   align-items: center;
 }
 
-.form__field input {
+input {
   border: 1px solid var(--gray-color);
   padding: 10px;
   border-radius: var(--border-radius);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   transition: all 0.5s;
-  margin-left: 20px;
-  width: auto;
+  margin-bottom: 20px;
+  box-sizing: border-box;
 }
 
-.form__field input:focus {
+input:focus {
   border-color: var(--primary-color);
 }
 
-.form__field .error,
-.form__field .error:focus {
+input.error,
+input.error:focus {
   border-color: var(--error-color);
   background: var(--error-background-color);
 }

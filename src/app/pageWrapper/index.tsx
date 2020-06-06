@@ -5,6 +5,7 @@ import { CartButton } from '../../shared/components/cartButton';
 import { LoginButton } from '../../shared/components/loginButton';
 import * as pathes from '../../shared/constants/pathes';
 import { cartActions } from '../cart/actions';
+import { ConfirmModal } from '../confirmModal';
 import { Currency } from '../currency';
 import { LoginModal } from '../loginModal';
 import './index.css';
@@ -39,6 +40,7 @@ export const PageWrapper = ({ children }: IPageWrapperProps) => {
       <main className='page-wrapper__main'>
         {children}
         <LoginModal />
+        <ConfirmModal />
       </main>
       <footer className='page-wrapper__footer'>
         <div className='container'></div>

@@ -31,7 +31,7 @@ export class CartApiSaga {
   }
 
   public *confirm(action: IActionPayloaded<ConfirmOderDTO>) {
-    yield put(cartActions.setFetching(true));
+    yield put(cartActions.setModalFetching(true));
 
     try {
       const response = yield orderClient.confirmOrder(action.payload);
@@ -45,7 +45,7 @@ export class CartApiSaga {
       yield put(cartActions.setError(error.message));
     }
 
-    yield put(cartActions.setFetching(false));
+    yield put(cartActions.setModalFetching(false));
   }
 
   public *rememberOrders() {

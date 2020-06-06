@@ -15,8 +15,8 @@
   left: 50vw;
   transform: translate(-50%, -50%);
   height: auto;
-  min-width: 100px;
-  width: 300px;
+  width: 90%;
+  max-width: 500px;
   background: white;
   padding: 20px;
   border-radius: var(--border-radius);
@@ -29,4 +29,13 @@
   right: 5px;
   font-size: 1.3rem;
   cursor: pointer;
+}
+
+.modal h1,
+.modal h2 {
+  font-weight: 400;
+}
+
+.modal button[type='submit'] {
+  width: 200px;
 }

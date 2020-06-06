@@ -1,3 +1,4 @@
+import { ConfirmOderDTO } from './../../shared/dto/ConfirmOrderDTO';
 import { OrderDTO } from './../../shared/dto/OrderDTO';
 import { OptionsEnum } from './../../shared/types/OptionsEnum';
 import * as types from './types';
@@ -42,7 +43,7 @@ export const cartActions = {
     payload,
   }),
 
-  confirm: (payload: OrderDTO[]) => ({
+  confirm: (payload: ConfirmOderDTO) => ({
     type: types.CART_CONFIRM,
     payload,
   }),
@@ -53,5 +54,18 @@ export const cartActions = {
 
   confirmError: () => ({
     type: types.CART_CONFIRM_ERROR,
+  }),
+
+  setModalFetching: (payload: boolean) => ({
+    type: types.CART_SET_MODAL_FETCHING,
+    payload,
+  }),
+
+  openModal: () => ({
+    type: types.CART_OPEN_MODAL,
+  }),
+
+  closeModal: () => ({
+    type: types.CART_CLOSE_MODAL,
   }),
 };

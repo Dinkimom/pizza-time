@@ -1,17 +1,18 @@
-import React, {
-  ChangeEvent,
-  createRef,
-  FormEvent,
-  MutableRefObject,
-  useState,
-} from 'react';
+import { Formik } from 'formik';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import * as Yup from 'yup';
+import { Button } from '../../shared/components/button';
+import { Input } from '../../shared/components/input';
 import { Modal } from '../../shared/components/modal';
 import { phoneRegex } from '../../shared/constants/phoneRegex';
 import { IRootState } from '../../store/state';
 import { profileActions } from '../profile/actions';
 import './index.css';
-import { Button } from '../../shared/components/button';
+
+const LoginSchema = Yup.object().shape({
+  phone: Yup.string().matches(phoneRegex).required('Required'),
+});
 
 export const LoginModal = () => {
   const dispatch = useDispatch();
@@ -20,49 +21,37 @@ export const LoginModal = () => {
     (state: IRootState) => state.profile,
   );
 
-  const phoneRef = createRef() as MutableRefObject<HTMLInputElement>;
-
-  const [phone, setPhone] = useState('');
-
   const handleClose = () => {
     dispatch(profileActions.closeModal());
   };
 
-  const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setPhone(e.target.value);
-    phoneRef.current.classList.remove('error');
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-
-    if (!phoneRegex.test(phone)) {
-      phoneRef.current.classList.add('error');
-    } else {
-      dispatch(profileActions.login({ phone }));
-    }
-  };
-
   return (
     <Modal className='login-modal' onClose={handleClose} isOpened={isOpened}>
-      <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
+      <Formik
+        initialValues={{
+          phone: '',
+        }}
+        enableReinitialize={true}
+        validationSchema={LoginSchema}
+        onSubmit={(values) => {
+          dispatch(profileActions.login(values));
+        }}
+        render={({ handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
+            <h1>Login</h1>
+            <Input
+              required={true}
+              name='phone'
+              disabled={isFetching}
+              placeholder='Phone number'
+            />
 
-        <label className='form__field'>
-          Phone number
-          <input
-            required={true}
-            value={phone}
-            onChange={handlePhoneChange}
-            ref={phoneRef}
-            disabled={isFetching}
-          />
-        </label>
-
-        <Button active={true} type='submit' loading={isFetching}>
-          Submit
-        </Button>
-      </form>
+            <Button active={true} type='submit' loading={isFetching}>
+              Submit
+            </Button>
+          </form>
+        )}
+      />
     </Modal>
   );
 };

@@ -1,19 +1,18 @@
-import { MinifiedOrderDTO } from './../../shared/dto/MinifiedOrderDTO';
 import { ICurrency } from '../../shared/types/ICurrency';
+import { ResponseTypesEnum } from '../../shared/types/ResponseTypesEnum';
 import { IActionPayloaded } from '../../store/IAction';
 import { IReducerPayloaded } from '../../store/IReducer';
 import { maxOrdersCount } from './../../shared/constants/maxOrdersCount';
+import { MinifiedOrderDTO } from './../../shared/dto/MinifiedOrderDTO';
 import { OrderDTO } from './../../shared/dto/OrderDTO';
 import { OptionsEnum } from './../../shared/types/OptionsEnum';
 import { ICartState } from './state';
 import * as types from './types';
-import { ResponseTypesEnum } from '../../shared/types/ResponseTypesEnum';
 
 const initialState: ICartState = {
   orders: [],
   isFetching: false,
   error: '',
-  response: ResponseTypesEnum.NotSubmitted,
   total: {
     usd: 0,
     eur: 0,
@@ -23,6 +22,9 @@ const initialState: ICartState = {
     eur: 8,
     usd: 7,
   },
+  isOpened: false,
+  isModalFetching: false,
+  response: ResponseTypesEnum.NotSubmitted,
 };
 
 export class CartReducer implements IReducerPayloaded<ICartState> {
@@ -64,7 +66,6 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
           newState.quantity = this.countOrders(newState.orders);
         }
         break;
-
       case types.CART_INCREMENT_ORDER:
         if (newState.quantity !== maxOrdersCount) {
           order = this.filterOrders(
@@ -82,7 +83,6 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
           newState.quantity = this.countOrders(newState.orders);
         }
         break;
-
       case types.CART_DECREMENT_ORDER:
         order = this.filterOrders(
           newState.orders,
@@ -105,7 +105,6 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
         );
         newState.quantity = this.countOrders(newState.orders);
         break;
-
       case types.CART_REMOVE_ORDER:
         newState.orders = this.removeOrder(
           newState.orders,
@@ -119,7 +118,6 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
         );
         newState.quantity = this.countOrders(newState.orders);
         break;
-
       case types.CART_ORDERS_REMEBERED:
         newState.orders = action.payload;
         newState.total = this.calculateTotal(
@@ -128,22 +126,29 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
         );
         newState.quantity = this.countOrders(newState.orders);
         break;
-
       case types.CART_SET_FETCHING:
         newState.isFetching = action.payload;
         break;
-
       case types.CART_SET_ERROR:
         newState.isFetching = action.payload;
         break;
-
       case types.CART_CONFIRM_SUCCESS:
         newState.response = ResponseTypesEnum.Success;
         newState.orders = [];
+        this.saveOrders(newState.orders);
         break;
-
       case types.CART_CONFIRM_ERROR:
         newState.response = ResponseTypesEnum.Error;
+        break;
+      case types.CART_SET_MODAL_FETCHING:
+        newState.isModalFetching = action.payload;
+        break;
+      case types.CART_OPEN_MODAL:
+        newState.isOpened = true;
+        break;
+      case types.CART_CLOSE_MODAL:
+        newState.isOpened = false;
+        newState.response = ResponseTypesEnum.NotSubmitted;
         break;
     }
 
