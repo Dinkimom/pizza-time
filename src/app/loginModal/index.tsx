@@ -11,6 +11,7 @@ import { phoneRegex } from '../../shared/constants/phoneRegex';
 import { IRootState } from '../../store/state';
 import { profileActions } from '../profile/actions';
 import './index.css';
+import { Button } from '../../shared/components/button';
 
 export const LoginModal = () => {
   const dispatch = useDispatch();
@@ -58,9 +59,9 @@ export const LoginModal = () => {
           />
         </label>
 
-        <button className='primary-button' type='submit' disabled={isFetching}>
+        <Button active={true} type='submit' loading={isFetching}>
           Submit
-        </button>
+        </Button>
       </form>
     </Modal>
   );

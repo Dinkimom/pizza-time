@@ -11,6 +11,7 @@ import { PizzaDTO } from '../../shared/dto/PizzaDTO';
 import { maxOrdersCount } from '../../shared/constants/maxOrdersCount';
 import { useCurrency } from '../../shared/hooks/useCurrency';
 import { useImages } from '../../shared/hooks/useImages';
+import { Button } from '../../shared/components/button';
 
 export const SelectionModal = () => {
   const [option, setOption] = useState(0);
@@ -75,15 +76,13 @@ export const SelectionModal = () => {
   const renderContorls = () => (
     <div className='selection-modal__controls'>
       {sizes.map((item, index) => (
-        <button
+        <Button
           onClick={() => handleOptionSelect(index)}
-          className={` ${
-            option === index ? 'primary-button--active' : 'secondary-button'
-          }`}
+          active={option === index}
           key={index}
         >
           {item}
-        </button>
+        </Button>
       ))}
     </div>
   );
@@ -107,26 +106,27 @@ export const SelectionModal = () => {
 
       <div className='selection-modal__footer'>
         <div className='selection-modal__footer__quantity'>
-          <button
-            className='primary-button'
+          <Button
+            primary={true}
             onClick={handleDecrement}
             disabled={isMinimumCountReached}
           >
             &#8722;
-          </button>
+          </Button>
           <span className='selection-modal__footer__quantity__value'>
             {quantity}
           </span>
-          <button
-            className='primary-button'
+          <Button
+            primary={true}
             onClick={handleIncrement}
             disabled={isMaximumCountReached}
           >
             &#43;
-          </button>
+          </Button>
         </div>
-        <button
-          className='selection-modal__controls__confirm primary-button'
+        <Button
+          primary={true}
+          className='selection-modal__controls__confirm'
           onClick={handleChoose}
           disabled={isLimitReached}
         >
@@ -141,7 +141,7 @@ export const SelectionModal = () => {
               {currency.symbol}
             </>
           )}
-        </button>
+        </Button>
       </div>
     </Modal>
   );

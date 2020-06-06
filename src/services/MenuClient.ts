@@ -7,7 +7,7 @@ export class MenuClient extends AbstractClient {
   }
 
   public getMenu = async () => {
-    await this.sleep(500);
+    await this.sleep(1000);
 
     return {
       data: pizzas,

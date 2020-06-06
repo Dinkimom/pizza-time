@@ -4,9 +4,12 @@ import { NavLink } from 'react-router-dom';
 import { IRootState } from '../../../store/state';
 import * as pathes from '../../constants/pathes';
 import './index.css';
+import { Button } from '../button';
 
 export const CartButton = () => {
-  const { quantity } = useSelector((state: IRootState) => state.cart);
+  const { quantity, isFetching } = useSelector(
+    (state: IRootState) => state.cart,
+  );
 
   const renderInner = () => {
     if (quantity === 0) {
@@ -25,7 +28,9 @@ export const CartButton = () => {
 
   return (
     <NavLink to={pathes.CART} activeClassName='none'>
-      <button className='cart-button primary-button'>{renderInner()}</button>
+      <Button loading={isFetching} active={true} className='cart-button'>
+        {renderInner()}
+      </Button>
     </NavLink>
   );
 };

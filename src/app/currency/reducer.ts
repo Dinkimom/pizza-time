@@ -1,4 +1,4 @@
-import { Currency } from './../../shared/types/Currency';
+import { CurrencyName } from './../../shared/types/CurrencyName';
 import { IActionPayloaded } from '../../store/IAction';
 import { IReducerPayloaded } from '../../store/IReducer';
 import { ICurrencyState } from './state';
@@ -31,7 +31,7 @@ export class CurrencyReducer implements IReducerPayloaded<ICurrencyState> {
         break;
       case types.CURRENCY_REMEMBER:
         newState.current = (localStorage.getItem('currency') ||
-          'eur') as Currency;
+          'eur') as CurrencyName;
         break;
     }
 

@@ -1,4 +1,4 @@
-import { Currency } from './../../shared/types/Currency';
+import { CurrencyName } from './../../shared/types/CurrencyName';
 import * as types from './types';
 
 export const currencyActions = {
@@ -6,7 +6,7 @@ export const currencyActions = {
     type: types.CURRENCY_REMEMBER,
   }),
 
-  setCurrent: (payload: Currency) => ({
+  setCurrent: (payload: CurrencyName) => ({
     type: types.CURRENCY_SET_CURRENT,
     payload,
   }),

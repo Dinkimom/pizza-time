@@ -5,6 +5,7 @@ import { useImages } from '../../hooks/useImages';
 import { OptionsEnum } from '../../types/OptionsEnum';
 import './index.css';
 import trashIcon from './trash.svg';
+import { Button } from '../button';
 
 interface IOrderProps {
   record: OrderDTO;
@@ -42,24 +43,24 @@ export const Order = ({
         <span className='order__quantity'>{record.quantity} pc.</span>
       ) : (
         <div className='order__controls'>
-          <button
-            className='primary-button'
+          <Button
+            primary={true}
             onClick={() =>
               onDecrement && onDecrement(record.pizza.id, record.option)
             }
           >
             &#8722;
-          </button>
+          </Button>
           <span className='order__controls__quantity'>{record.quantity}</span>
-          <button
-            className='primary-button'
+          <Button
+            primary={true}
             onClick={() =>
               onIncrement && onIncrement(record.pizza.id, record.option)
             }
             disabled={disabled}
           >
             &#43;
-          </button>
+          </Button>
         </div>
       )}
 

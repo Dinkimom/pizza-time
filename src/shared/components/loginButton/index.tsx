@@ -5,6 +5,7 @@ import { IRootState } from '../../../store/state';
 import { PROFILE } from '../../constants/pathes';
 import { NavLink } from 'react-router-dom';
 import { profileActions } from '../../../app/profile/actions';
+import { Button } from '../button';
 
 export const LoginButton = () => {
   const dispatch = useDispatch();
@@ -18,14 +19,14 @@ export const LoginButton = () => {
   if (user !== null) {
     return (
       <NavLink to={PROFILE}>
-        <button className='secondary-button login-button'>{user.name}</button>
+        <Button className='login-button'>{user.name}</Button>
       </NavLink>
     );
   } else {
     return (
-      <button className='secondary-button login-button' onClick={handleOpen}>
+      <Button className='login-button' onClick={handleOpen}>
         Login
-      </button>
+      </Button>
     );
   }
 };

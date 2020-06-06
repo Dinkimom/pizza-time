@@ -46,7 +46,7 @@
   visibility: hidden;
 }
 
-.cart-button:hover .cart-button__divider {
+.cart-button .cart-button__divider {
   background: white;
 }
 

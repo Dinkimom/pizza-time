@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { currences } from '../../shared/constants/currences';
-import { Currency as CurrencyType } from '../../shared/types/Currency';
+import { CurrencyName } from '../../shared/types/CurrencyName';
 import { IRootState } from '../../store/state';
 import { currencyActions } from './actions';
 import './index.css';
@@ -15,11 +15,11 @@ export const Currency = () => {
 
   const { current } = useSelector((state: IRootState) => state.currency);
 
-  const handleChange = (currency: CurrencyType) => {
+  const handleChange = (currency: CurrencyName) => {
     dispatch(currencyActions.setCurrent(currency));
   };
 
-  const keys = Object.keys(currences) as CurrencyType[];
+  const keys = Object.keys(currences) as CurrencyName[];
 
   return (
     <div className='currency'>

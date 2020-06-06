@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom';
 import { maxOrdersCount } from '../../shared/constants/maxOrdersCount';
 import { useCurrency } from '../../shared/hooks/useCurrency';
 import { currences } from '../../shared/constants/currences';
+import { Button } from '../../shared/components/button';
 
 export const Cart = () => {
   const dispatch = useDispatch();
@@ -85,15 +86,15 @@ export const Cart = () => {
             {currency.current === 'eur' ? currences.usd : currences.eur}
           </p>
           <div className='cart__controls'>
-            <button className='primary-button--active'>Order</button>
+            <Button active={true}>Order</Button>
             <NavLink to='/'>
-              <button className='secondary-button'>Back to menu</button>
+              <Button>Go to menu</Button>
             </NavLink>
           </div>
         </>
       )) || (
         <NavLink to='/'>
-          <button className='secondary-button'>Go to menu</button>
+          <Button>Go to menu</Button>
         </NavLink>
       )}
     </Container>

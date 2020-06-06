@@ -1,5 +1,5 @@
-import { Currency } from './../../shared/types/Currency';
+import { CurrencyName } from './../../shared/types/CurrencyName';
 
 export interface ICurrencyState {
-  current: Currency;
+  current: CurrencyName;
 }

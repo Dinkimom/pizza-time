@@ -6,6 +6,7 @@ import './index.css';
 import { Order } from '../../shared/components/order';
 import { useCurrency } from '../../shared/hooks/useCurrency';
 import { profileActions } from './actions';
+import { Button } from '../../shared/components/button';
 
 export const Profile = () => {
   const dispatch = useDispatch();
@@ -48,12 +49,9 @@ export const Profile = () => {
     <Container isFetching={isFetching} error={error} className='profile'>
       <div className='profile__user-block'>
         <p className='profile__user-block__name'>{user?.name}</p>
-        <button
-          className='secondary-button profile__user-block__logout'
-          onClick={handleLogout}
-        >
+        <Button className='profile__user-block__logout' onClick={handleLogout}>
           Logout
-        </button>
+        </Button>
       </div>
       <h2>History</h2>
       {renderHistory()}

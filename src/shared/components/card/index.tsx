@@ -3,6 +3,7 @@ import { PizzaDTO } from '../../dto/PizzaDTO';
 import { useCurrency } from '../../hooks/useCurrency';
 import { useImages } from '../../hooks/useImages';
 import './index.css';
+import { Button } from '../button';
 
 interface ICardProps {
   handleClick: (...args: any) => void;
@@ -27,9 +28,9 @@ export const Card = ({ handleClick, record }: ICardProps) => {
           From {record.options[0].price[currency.current]}
           {currency.symbol}
         </p>
-        <button className='primary-button' onClick={handleClick}>
+        <Button primary={true} onClick={handleClick}>
           Choose
-        </button>
+        </Button>
       </div>
     </div>
   );

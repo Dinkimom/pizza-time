@@ -20,7 +20,13 @@
 
 .order__info__details {
   margin: 0;
+  margin-left: 10px;
   color: var(--gray-font-color);
+}
+
+.order__info__name {
+  width: 120px;
+  margin-left: 10px;
 }
 
 .order__controls {

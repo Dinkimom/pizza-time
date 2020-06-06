@@ -1,6 +1,5 @@
-import { Currency } from './../types/Currency';
-import { OrderDTO } from './OrderDTO';
 import { ICurrency } from '../types/ICurrency';
+import { OrderDTO } from './OrderDTO';
 
 export interface HistoryDTO {
   date: Date;
