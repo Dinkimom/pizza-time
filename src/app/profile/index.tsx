@@ -19,6 +19,10 @@ export const Profile = () => {
     dispatch(profileActions.loadHistory(user?.id as string));
   }, [dispatch, user]);
 
+  const handleLogout = () => {
+    dispatch(profileActions.logout());
+  };
+
   const renderHistory = () => {
     if (history.length === 0) {
       return <p>There are no orders yet</p>;
@@ -42,6 +46,15 @@ export const Profile = () => {
 
   return (
     <Container isFetching={isFetching} error={error} className='profile'>
+      <div className='profile__user-block'>
+        <p className='profile__user-block__name'>{user?.name}</p>
+        <button
+          className='secondary-button profile__user-block__logout'
+          onClick={handleLogout}
+        >
+          Logout
+        </button>
+      </div>
       <h2>History</h2>
       {renderHistory()}
     </Container>

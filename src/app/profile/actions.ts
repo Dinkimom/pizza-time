@@ -28,7 +28,7 @@ export const profileActions = {
   }),
 
   logout: () => ({
-    type: types.PROFILE_LOGIN,
+    type: types.PROFILE_LOGOUT,
   }),
 
   setFetching: (payload: boolean) => ({

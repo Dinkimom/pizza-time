@@ -42,11 +42,13 @@
   }
 
   .page-wrapper__header__logo {
-    width: 90px;
-    height: auto;
-  }
-
-  .page-wrapper__header__control-block {
+    width: 56px;
+    height: 40px;
+    padding-left: 56px;
+    display: block;
+    background-image: url('./mobile-logo.svg');
+    background-repeat: no-repeat;
+    box-sizing: border-box;
   }
 
   .page-wrapper__header__control-block button {

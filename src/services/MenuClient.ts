@@ -1,5 +1,4 @@
 import { pizzas } from './../shared/constants/pizzas';
-import { PizzaDTO } from './../shared/dto/PizzaDTO';
 import { AbstractClient } from './AbstractClient';
 
 export class MenuClient extends AbstractClient {
@@ -8,7 +7,7 @@ export class MenuClient extends AbstractClient {
   }
 
   public getMenu = async () => {
-    await this.sleep(1000);
+    await this.sleep(500);
 
     return {
       data: pizzas,

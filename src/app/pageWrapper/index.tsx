@@ -9,6 +9,7 @@ import { cartActions } from '../cart/actions';
 import { Currency } from '../currency';
 import { LoginModal } from '../loginModal';
 import './index.css';
+import logo from './logo.svg';
 
 interface IPageWrapperProps {
   children: ReactNode;
@@ -29,11 +30,7 @@ export const PageWrapper = ({ children }: IPageWrapperProps) => {
       <header className='page-wrapper__header'>
         <div className='container'>
           <NavLink to={pathes.ROOT}>
-            <img
-              src='./images/logo.svg'
-              alt='logo'
-              className='page-wrapper__header__logo'
-            />
+            <img src={logo} alt='logo' className='page-wrapper__header__logo' />
           </NavLink>
 
           <div className='page-wrapper__header__control-block'>

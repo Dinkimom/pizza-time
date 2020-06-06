@@ -61,7 +61,7 @@ export class CartApiSaga {
       if (!Array.isArray(minifiedOrders)) {
         isValid = false;
       } else {
-        for (var i = 0; i < minifiedOrders.length; i++) {
+        for (let i = 0; i < minifiedOrders.length; i++) {
           let item = minifiedOrders[i];
 
           if (
@@ -93,7 +93,7 @@ export class CartApiSaga {
 
         let orders: OrderDTO[] = [];
 
-        for (var i = 0; i < minifiedOrders.length; i++) {
+        for (let i = 0; i < minifiedOrders.length; i++) {
           const minifiedOrder = minifiedOrders[i];
           const pizza = respone.data.filter(
             (item: PizzaDTO) => minifiedOrder.id === item.id,
