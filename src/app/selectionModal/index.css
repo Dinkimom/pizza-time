@@ -53,6 +53,12 @@
 
 .selection-modal__footer__quantity__value {
   font-size: 1.3rem;
-  width: 40px;
+  width: 30px;
   display: inline-block;
+}
+
+@media screen and (max-width: 480px) {
+  .selection-modal__controls__confirm {
+    font-size: 0.9rem;
+  }
 }

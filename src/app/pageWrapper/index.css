@@ -37,9 +37,16 @@
 }
 
 @media screen and (max-width: 480px) {
+  .page-wrapper__header .container {
+    padding: 10px;
+  }
+
   .page-wrapper__header__logo {
     width: 90px;
     height: auto;
+  }
+
+  .page-wrapper__header__control-block {
   }
 
   .page-wrapper__header__control-block button {

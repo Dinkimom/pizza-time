@@ -1,9 +1,11 @@
 import React from 'react';
+import { imagesEntryPoint } from '../../constants/imagesEntryPoint';
 import { OrderDTO } from '../../dto/OrderDTO';
 import { useCurrency } from '../../hooks/useCurrency';
 import { OptionsEnum } from '../../types/OptionsEnum';
 import './index.css';
 import trashIcon from './trash.svg';
+import { useImages } from '../../hooks/useImages';
 
 interface IOrderProps {
   record: OrderDTO;
@@ -26,13 +28,11 @@ export const Order = ({
 
   const { size, weight, price } = record.pizza.options[record.option];
 
+  const pizzaImage = useImages(record.pizza.id);
+
   return (
     <div className='order'>
-      <img
-        src='./images/pizza.png'
-        alt={record.pizza.name}
-        className='order__image'
-      />
+      <img src={pizzaImage} alt={record.pizza.name} className='order__image' />
       <div className='order__info'>
         <p className='order__info__name'>{record.pizza.name}</p>
         <p className='order__info__details'>

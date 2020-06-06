@@ -10,6 +10,7 @@ import { cartActions } from '../cart/actions';
 import { PizzaDTO } from '../../shared/dto/PizzaDTO';
 import { maxOrdersCount } from '../../shared/constants/maxOrdersCount';
 import { useCurrency } from '../../shared/hooks/useCurrency';
+import { useImages } from '../../shared/hooks/useImages';
 
 export const SelectionModal = () => {
   const [option, setOption] = useState(0);
@@ -18,9 +19,12 @@ export const SelectionModal = () => {
   const dispatch = useDispatch();
 
   const { currentPizza } = useSelector((state: IRootState) => state.menu);
+
   const { quantity: currentCount } = useSelector(
     (state: IRootState) => state.cart,
   );
+
+  const pizzaImage = useImages(currentPizza?.id as string);
 
   const currency = useCurrency();
 
@@ -91,7 +95,7 @@ export const SelectionModal = () => {
       className='selection-modal'
     >
       <div className='selection-modal__image'>
-        <img src='./images/pizza.png' alt='pizza' />
+        <img src={pizzaImage} alt='pizza' />
       </div>
       <p className='selection-modal__name'>{currentPizza?.name}</p>
       <p className='selection-modal__info'>

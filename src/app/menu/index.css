@@ -22,4 +22,8 @@
   .menu {
     grid-template-columns: repeat(1, 1fr);
   }
+
+  .menu.container {
+    padding: 10px;
+  }
 }

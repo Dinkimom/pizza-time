@@ -12,7 +12,7 @@ export const pizzas: PizzaDTO[] = [
   },
   {
     id: '1',
-    name: 'Pepperoni',
+    name: 'Cheesy',
     description: 'Some very important description of pizza',
     options: [
       { price: { usd: 10, eur: 8 }, weight: 300, size: 25 },
@@ -22,7 +22,7 @@ export const pizzas: PizzaDTO[] = [
   },
   {
     id: '2',
-    name: 'Pepperoni',
+    name: 'Ham and cheese',
     description: 'Some very important description of pizza',
     options: [
       { price: { usd: 10, eur: 8 }, weight: 300, size: 25 },
@@ -32,7 +32,7 @@ export const pizzas: PizzaDTO[] = [
   },
   {
     id: '3',
-    name: 'Pepperoni',
+    name: 'Margarita',
     description: 'Some very important description of pizza',
     options: [
       { price: { usd: 10, eur: 8 }, weight: 300, size: 25 },
@@ -42,7 +42,7 @@ export const pizzas: PizzaDTO[] = [
   },
   {
     id: '4',
-    name: 'Pepperoni',
+    name: 'Hawaiian',
     description: 'Some very important description of pizza',
     options: [
       { price: { usd: 10, eur: 8 }, weight: 300, size: 25 },
@@ -52,7 +52,7 @@ export const pizzas: PizzaDTO[] = [
   },
   {
     id: '5',
-    name: 'Pepperoni',
+    name: 'Four cheeses',
     description: 'Some very important description of pizza',
     options: [
       { price: { usd: 10, eur: 8 }, weight: 300, size: 25 },
@@ -62,7 +62,7 @@ export const pizzas: PizzaDTO[] = [
   },
   {
     id: '6',
-    name: 'Pepperoni',
+    name: 'Double pepperoni',
     description: 'Some very important description of pizza',
     options: [
       { price: { usd: 10, eur: 8 }, weight: 300, size: 25 },
@@ -72,7 +72,7 @@ export const pizzas: PizzaDTO[] = [
   },
   {
     id: '7',
-    name: 'Pepperoni',
+    name: 'Ham and mushrooms',
     description: 'Some very important description of pizza',
     options: [
       { price: { usd: 10, eur: 8 }, weight: 300, size: 25 },

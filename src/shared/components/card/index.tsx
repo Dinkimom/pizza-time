@@ -1,7 +1,8 @@
 import React from 'react';
 import { PizzaDTO } from '../../dto/PizzaDTO';
-import './index.css';
 import { useCurrency } from '../../hooks/useCurrency';
+import { useImages } from '../../hooks/useImages';
+import './index.css';
 
 interface ICardProps {
   handleClick: (...args: any) => void;
@@ -11,10 +12,12 @@ interface ICardProps {
 export const Card = ({ handleClick, record }: ICardProps) => {
   const currency = useCurrency();
 
+  const pizzaImage = useImages(record.id);
+
   return (
     <div className='card'>
       <div className='card__image'>
-        <img src='./images/pizza.png' alt={record.name} />
+        <img src={pizzaImage} alt={record.name} />
       </div>
 
       <p className='card__name'>{record.name}</p>
