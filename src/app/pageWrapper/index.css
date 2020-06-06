@@ -33,7 +33,7 @@
 }
 
 .page-wrapper__footer {
-  background: var(--dark-gray-color);
+  background: var(--gray-color);
 }
 
 @media screen and (max-width: 768px) {

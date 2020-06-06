@@ -5,11 +5,10 @@
 }
 
 .selection-modal__image {
-  margin-bottom: 20px;
-}
-
-.selection-modal__image img {
   max-width: 250px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 20px auto;
 }
 
 .selection-modal__name {

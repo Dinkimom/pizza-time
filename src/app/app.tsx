@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Dimmer } from '../shared/components/dimmer';
 import { PrivateRoute } from '../shared/components/privateRoute';
 import * as pathes from '../shared/constants/pathes';
 import { Cart } from './cart';
@@ -25,6 +26,7 @@ export const App = () => {
           <Route component={PageNotFound} />
         </Switch>
       </PageWrapper>
+      <Dimmer />
     </Router>
   );
 };

@@ -6,8 +6,5 @@ interface IErrorMessageProps {
 }
 
 export const ErrorMessage = ({ message }: IErrorMessageProps) => (
-  <div className='error-message'>
-    <span>!</span>
-    <p>{message}</p>
-  </div>
+  <p className='error-message'>{message}</p>
 );

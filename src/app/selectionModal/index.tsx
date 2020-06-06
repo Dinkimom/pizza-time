@@ -94,9 +94,7 @@ export const SelectionModal = () => {
       onClose={handleClose}
       className='selection-modal'
     >
-      <div className='selection-modal__image'>
-        <Image src={pizzaImage} alt='pizza' />
-      </div>
+      <Image src={pizzaImage} alt='pizza' className='selection-modal__image' />
       <p className='selection-modal__name'>{currentPizza?.name}</p>
       <p className='selection-modal__info'>
         {currentPizza?.options[option].size}cm,{' '}

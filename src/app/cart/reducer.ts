@@ -136,6 +136,11 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
         newState.response = ResponseTypesEnum.Success;
         newState.orders = [];
         this.saveOrders(newState.orders);
+        newState.total = this.calculateTotal(
+          newState.orders,
+          newState.deliveryCost,
+        );
+        newState.quantity = this.countOrders(newState.orders);
         break;
       case types.CART_CONFIRM_ERROR:
         newState.response = ResponseTypesEnum.Error;
