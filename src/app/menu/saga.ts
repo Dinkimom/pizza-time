@@ -26,7 +26,7 @@ export class MenuApiSaga {
     try {
       const response = yield menuClient.getMenu();
 
-      yield put(menuActions.dataLoaded(response));
+      yield put(menuActions.dataLoaded(response.data));
     } catch (error) {
       yield put(menuActions.setError(error.message));
     }

@@ -1,3 +1,4 @@
+import { MinifiedOrderDTO } from './../../shared/dto/MinifiedOrderDTO';
 import { ICurrency } from '../../shared/types/ICurrency';
 import { IActionPayloaded } from '../../store/IAction';
 import { IReducerPayloaded } from '../../store/IReducer';
@@ -119,9 +120,8 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
         newState.quantity = this.countOrders(newState.orders);
         break;
 
-      case types.CART_REMEMBER_ORDERS:
-        newState.orders =
-          JSON.parse(localStorage.getItem('orders') as string) || [];
+      case types.CART_ORDERS_REMEBERED:
+        newState.orders = action.payload;
         newState.total = this.calculateTotal(
           newState.orders,
           newState.deliveryCost,
@@ -173,7 +173,13 @@ export class CartReducer implements IReducerPayloaded<ICartState> {
   };
 
   public saveOrders = (orders: OrderDTO[]) => {
-    localStorage.setItem('orders', JSON.stringify(orders));
+    const minifiedOrders: MinifiedOrderDTO[] = orders.map((item) => ({
+      id: item.pizza.id,
+      option: item.option,
+      quantity: item.quantity,
+    }));
+
+    localStorage.setItem('orders', JSON.stringify(minifiedOrders));
   };
 
   public calculateTotal = (orders: OrderDTO[], deliveryCost: ICurrency) => {

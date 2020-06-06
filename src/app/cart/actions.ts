@@ -7,6 +7,11 @@ export const cartActions = {
     type: types.CART_REMEMBER_ORDERS,
   }),
 
+  ordersRemembered: (payload: OrderDTO[]) => ({
+    type: types.CART_ORDERS_REMEBERED,
+    payload,
+  }),
+
   incrementOrder: (payload: { id: string; option: OptionsEnum }) => ({
     type: types.CART_INCREMENT_ORDER,
     payload,

@@ -7,9 +7,11 @@ export class MenuClient extends AbstractClient {
     super('menu');
   }
 
-  public getMenu = async (): Promise<PizzaDTO[]> => {
+  public getMenu = async () => {
     await this.sleep(1000);
 
-    return pizzas;
+    return {
+      data: pizzas,
+    };
   };
 }

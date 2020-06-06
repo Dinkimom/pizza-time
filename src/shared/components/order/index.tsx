@@ -1,11 +1,10 @@
 import React from 'react';
-import { imagesEntryPoint } from '../../constants/imagesEntryPoint';
 import { OrderDTO } from '../../dto/OrderDTO';
 import { useCurrency } from '../../hooks/useCurrency';
+import { useImages } from '../../hooks/useImages';
 import { OptionsEnum } from '../../types/OptionsEnum';
 import './index.css';
 import trashIcon from './trash.svg';
-import { useImages } from '../../hooks/useImages';
 
 interface IOrderProps {
   record: OrderDTO;
