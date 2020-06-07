@@ -1,0 +1,74 @@
+.selection-modal {
+  width: 90vw;
+  max-width: 400px;
+  text-align: center;
+}
+
+.selection-modal__image {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 20px auto;
+}
+
+.selection-modal__name {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.selection-modal__info {
+  color: var(--gray-font-color);
+}
+
+.selection-modal__controls {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  margin-bottom: 20px;
+}
+
+.selection-modal__controls .active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.selection-modal__controls.active:hover {
+  color: white;
+  background: var(--hovered-primary-color);
+  border-color: var(--hovered-primary-color);
+}
+
+.selection-modal__confirm {
+  width: 100%;
+}
+
+.selection-modal__footer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 10px;
+}
+
+.selection-modal__footer__quantity {
+  display: flex;
+  align-items: center;
+}
+
+.selection-modal__footer__quantity__value {
+  font-size: 1.3rem;
+  width: 30px;
+  display: inline-block;
+}
+
+@media screen and (max-width: 480px) {
+  .selection-modal__controls button {
+    padding: 10px 5px;
+  }
+  .selection-modal__controls__confirm {
+    font-size: 0.9rem;
+  }
+  .selection-modal__footer__quantity button {
+    padding: 10px;
+  }
+}

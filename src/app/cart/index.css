@@ -1,0 +1,44 @@
+.cart.container {
+  max-width: 800px;
+}
+
+.cart__no-pizza {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.cart__delivery {
+  padding: 20px 0;
+  border-top: 1px solid var(--gray-color);
+  border-bottom: 1px solid var(--gray-color);
+  margin: 0 0 20px 0;
+  font-size: 1.5rem;
+}
+
+.cart__total {
+  margin: 10px 0 0 0;
+}
+
+.cart h2 span,
+.cart h3 span {
+  color: var(--primary-color);
+}
+
+.cart h3 {
+  font-weight: 400;
+}
+
+.cart__price {
+  color: var(--gray-font-color);
+  margin: 0 0 20px 0;
+}
+
+.cart__controls {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 20px;
+}
+
+.cart__controls button {
+  width: 100%;
+}

@@ -1,0 +1,105 @@
+.button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: all 0.5s;
+  cursor: pointer;
+  font-size: 1rem;
+  border: 1px solid var(--gray-color);
+  background: none;
+  background-repeat: none;
+  position: relative;
+}
+
+.button:hover {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.button__inner {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.button__loader {
+  display: none;
+}
+
+.button.loading .button__loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  transform: translate(-50%, -50%);
+}
+
+.button.loading .button__inner {
+  visibility: hidden;
+}
+
+.button__loader .dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  margin: 5px;
+  box-sizing: border-box;
+  animation-name: glow;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.button__loader .dot:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+@keyframes glow {
+  from {
+    background: var(--primary-color);
+  }
+
+  50% {
+    background: white;
+  }
+
+  from {
+    background: var(--primary-color);
+  }
+}
+
+.primary-button {
+  border: 1px solid var(--primary-color);
+  background: none;
+  color: var(--primary-color);
+}
+
+.primary-button:hover,
+.primary-button--active {
+  background: var(--primary-color);
+  color: white;
+  border: 1px solid var(--primary-color);
+}
+
+.primary-button--active:hover {
+  background: var(--primary-hovered-color);
+  color: white;
+}
+
+.primary-button:not(.loading):disabled {
+  color: var(--gray-font-color);
+  border-color: var(--gray-font-color);
+  cursor: not-allowed;
+}
+
+.primary-button:not(.loading):disabled:hover {
+  background: none;
+}
+
+.button.loading {
+  border: 1px solid var(--primary-color);
+  background: var(--primary-color);
+}

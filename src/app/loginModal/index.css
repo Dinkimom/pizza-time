@@ -1,0 +1,8 @@
+.login-modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-modal input {
+  width: 100%;
+}

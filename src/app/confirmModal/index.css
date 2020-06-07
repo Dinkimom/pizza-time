@@ -1,0 +1,41 @@
+.confirm-modal {
+  position: relative;
+}
+
+.confirm-modal h2:last-of-type {
+  border-top: 1px solid var(--gray-color);
+  margin-top: 0;
+  padding-top: 20px;
+}
+
+.confirm-modal input {
+  width: 100%;
+}
+
+.confirm-modal__row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 20px;
+}
+
+.confirm-modal__success {
+  font-size: 1.5rem;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.confirm-modal__success p {
+  margin: 0;
+}
+
+.confirm-modal__success p:first-child {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-modal__row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
